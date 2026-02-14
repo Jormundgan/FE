@@ -1,4 +1,3 @@
-/* Quitamos márgenes por defecto */
 * {
     margin: 0;
     padding: 0;
@@ -6,41 +5,35 @@
 }
 
 body {
-    /* Tu color púrpura profundo */
+    /* Tu color púrpura oscuro exacto */
     background-color: #0F030F; 
-    
-    /* Centramos el contenido en la pantalla */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* La altura será el 100% de la ventana visible */
-    min-height: 100vh; 
-}
-
-/* Contenedor que limita el espacio del video */
-.contenedor-video {
-    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px; /* Pequeño margen para que no pegue a los bordes en PC */
+    overflow: hidden;
 }
 
-/* Estilos responsivos para el video */
-video {
+.contenedor-principal {
     width: 100%;
-    max-width: 600px; /* Ajusta según el tamaño de tu video */
-    height: auto;
-    object-fit: contain;
-    background-color: #0F030F; /* Fondo igual al body por si tarda */
-    
-    /* Animación de entrada suave */
-    animation: aparecer 0.5s ease-in;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes aparecer {
+.video-full {
+    width: 100%;
+    height: 100%;
+    /* "contain" para que se vea todo el video sin recortes */
+    /* "cover" si prefieres que llene toda la pantalla del móvil */
+    object-fit: contain; 
+    
+    /* Animación para que aparezca suavemente al cargar */
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
