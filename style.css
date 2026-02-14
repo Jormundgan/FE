@@ -76,13 +76,22 @@ body {
     background: #2e8b57;
     border-radius: 50% 0 50% 0;
 }
-.leaf.l { bottom: 60px; left: -25px; transform: rotate(-30deg); }
-.leaf.r { bottom: 90px; right: -25px; transform: rotate(30deg) scaleX(-1); }
+.leaf.l {
+    bottom: 60px;
+    left: 20px;          /* ajustado para que el borde derecho toque el tallo */
+    transform: rotate(-30deg);
+}
+.leaf.r {
+    bottom: 90px;
+    left: 50px;          /* ajustado para que el borde izquierdo toque el tallo */
+    transform: rotate(30deg) scaleX(-1);
+}
 
 /* Cabeza de la Flor (Pétalos) */
 .head {
     position: absolute;
-    top: -20px;
+    top: -60px;           /* para que la base de los pétalos coincida con el tallo */
+    left: calc(50% - 17.5px); /* centra el punto de unión de los pétalos */
     animation: float 3s ease-in-out infinite;
     cursor: pointer;
     transition: transform 0.3s;
@@ -97,9 +106,9 @@ body {
     position: absolute;
     width: 35px;
     height: 60px;
-    background: radial-gradient(circle at bottom, #fff, #00d2ff, #0055ff);
+    background: radial-gradient(circle at bottom, #fff, #ff4d4d, #b30000); /* rojo */
     border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 15px #00ffff;
+    box-shadow: 0 0 15px #ff6666; /* sombra roja */
     transform-origin: bottom center;
 }
 
@@ -116,7 +125,7 @@ body {
     height: 15px;
     background: white;
     border-radius: 50%;
-    top: 45px;
+    top: 52.5px;          /* centrado en el punto de unión de los pétalos */
     left: 10px;
     box-shadow: 0 0 20px white;
     z-index: 10;
