@@ -5,9 +5,8 @@
 }
 
 body {
-    /* Este degradado crea una sensación de profundidad púrpura */
-    background: radial-gradient(circle, #2d0a2d 0%, #150215 60%, #050005 100%);
-    
+    /* Fondo base muy oscuro para que el púrpura resalte */
+    background-color: #0a000a; 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,35 +14,60 @@ body {
     overflow: hidden;
 }
 
-.contenedor-principal {
+.escena {
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
-/* Añadimos un resplandor extra detrás del video */
-.contenedor-principal::before {
-    content: "";
+/* Esta es la capa que crea el efecto púrpura ambiental */
+.aura {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 20, 147, 0.15); /* Color de la rosa */
-    filter: blur(80px);
-    border-radius: 50%;
-    z-index: 0;
+    width: 80%;
+    height: 80%;
+    /* Un degradado radial con púrpuras y magentas */
+    background: radial-gradient(circle, 
+        rgba(106, 13, 173, 0.4) 0%, 
+        rgba(50, 0, 50, 0.2) 50%, 
+        transparent 80%);
+    filter: blur(60px);
+    z-index: 1;
 }
 
-.video-full {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    position: relative;
-    z-index: 1;
+.video-rosa {
+    z-index: 2;
+    max-width: 100%;
+    max-height: 90vh; /* Para que en PC no se corte */
+    object-fit: contain;
     
-    /* Suavizamos los bordes del video para que se mezclen con el fondo */
-    mask-image: radial-gradient(circle, black 70%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    /* TRUCO: Este filtro ayuda a que el púrpura del video 
+       se integre con el fondo de la página */
+    filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.2));
+    
+    /* Animación suave al cargar */
+    animation: luzRosa 3s infinite alternate ease-in-out;
+}
+
+/* Pequeña animación para que el fondo "respire" con la rosa */
+@keyframes luzRosa {
+    from { filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.2)); }
+    to { filter: drop-shadow(0 0 50px rgba(255, 0, 127, 0.4)); }
+}
+
+/* Ajuste específico para móviles */
+@media (max-width: 768px) {
+    .video-rosa {
+        width: 100%;
+        height: auto;
+    }
+    .aura {
+        width: 100%;
+        background: radial-gradient(circle, 
+            rgba(106, 13, 173, 0.6) 0%, 
+            rgba(30, 0, 30, 0.3) 60%, 
+            transparent 90%);
+    }
 }
