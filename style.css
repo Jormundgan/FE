@@ -21,12 +21,8 @@ body {
 
 video {
     /* El video se expande para llenar la pantalla */
-    width: 90vw;
-    height: 90vh;
-    
-    /* 'cover' hace que el video llene todo sin dejar espacios, 
-       aunque se recorte un poco en los lados para ajustar */
-    object-fit: cover;
+    width: 100vw;
+    height: 70vh;
     
     /* El truco de mezcla para que el púrpura de tu imagen 
        se fusione con el brillo de la rosa */
