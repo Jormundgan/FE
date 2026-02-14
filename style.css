@@ -1,44 +1,45 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ... (mantén tus estilos previos de body) ... */
 
 body {
     background: url('P.jpeg') no-repeat center center fixed;
     background-size: cover;
-    color: #300030;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    display: flex; /* Activa Flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
-
-.contenedor-principal {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente elegante */
 }
 
-/* Cambiamos 'videoRosa' por '.video-full' para que coincida con la class del HTML */
+.contenido-rosa {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    align-items: center;
+    gap: 20px; /* Espacio entre el texto y el video */
+}
+
+.mensaje-rosa {
+    color: #ff69b4; /* Un rosa brillante */
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8); /* Efecto neón */
+    text-align: center;
+    text-transform: lowercase;
+    font-style: italic;
+}
+
 .video-full {
     width: 50vw;
-    height: auto; /* Dejar en auto evita que se estire feo */
-    max-height: 80vh; 
-    
+    height: auto;
     mix-blend-mode: screen;
     filter: brightness(1.1) contrast(1.1);
-    
-    /* Asegura que se vea bien en el centro */
-    display: block; 
 }
 
 @media (max-width: 768px) {
     .video-full {
-        width: 90vw; /* Más grande en móviles para que luzca */
+        width: 85vw;
+    }
+    .mensaje-rosa {
+        font-size: 1.5rem;
     }
 }
