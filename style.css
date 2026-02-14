@@ -1,52 +1,199 @@
-body {
-    margin: 0;
-    height: 100vh;
-    background: radial-gradient(circle at 30% 20%, #132336, #02040a 70%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* Cúpula */
-.glass {
-    position: relative;
-    width: 340px;
-    height: 500px;
-    border-radius: 180px 180px 25px 25px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.25);
-    backdrop-filter: blur(8px);
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000814;
+    overflow:hidden;
+    font-family:sans-serif;
+}
+
+/* 🌌 FONDO ESTRELLAS */
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size:50px 50px, 80px 80px;
+    animation:moveStars 60s linear infinite;
+    opacity:.3;
+}
+
+@keyframes moveStars{
+    from{background-position:0 0, 0 0;}
+    to{background-position:1000px 1000px, -1000px 1000px;}
+}
+
+/* ESCENA */
+.scene{
+    position:relative;
+    z-index:2;
+}
+
+/* CÚPULA */
+.glass{
+    position:relative;
+    width:350px;
+    height:520px;
+    border-radius:200px 200px 30px 30px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
     box-shadow:
-        inset 0 40px 60px rgba(255,255,255,0.15),
-        inset 0 -40px 80px rgba(0,0,0,0.6),
-        0 0 60px rgba(0,255,255,0.3);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 60px;
-    overflow: hidden;
+        inset 0 60px 80px rgba(255,255,255,0.2),
+        inset 0 -60px 100px rgba(0,0,0,0.7),
+        0 0 120px rgba(0,255,255,0.4);
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    overflow:hidden;
 }
 
-/* Rosa */
-.rose {
-    width: 220px;
-    animation: float 6s ease-in-out infinite;
-    filter: drop-shadow(0 0 25px rgba(0,255,255,0.6));
+/* Reflejo lateral */
+.glass::before{
+    content:"";
+    position:absolute;
+    top:8%;
+    left:8%;
+    width:70px;
+    height:250px;
+    background:linear-gradient(to bottom,
+        rgba(255,255,255,0.7),
+        rgba(255,255,255,0.05)
+    );
+    border-radius:50px;
+    filter:blur(12px);
+    transform:rotate(10deg);
+    animation:shine 6s infinite alternate;
 }
 
-/* Base */
-.base {
-    position: absolute;
-    bottom: -20px;
-    width: 360px;
-    height: 40px;
-    border-radius: 25px;
-    background: linear-gradient(45deg, #4a3624, #6a4a2f);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.7);
+/* Reflejo superior */
+.glass::after{
+    content:"";
+    position:absolute;
+    top:-40px;
+    width:80%;
+    height:150px;
+    background:radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.5),
+        transparent 70%
+    );
+    border-radius:50%;
+    filter:blur(30px);
+    opacity:.6;
 }
 
-/* Animación flotación */
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+@keyframes shine{
+    from{opacity:.6;}
+    to{opacity:.95;}
+}
+
+/* 🌫 Vapor */
+.mist{
+    position:absolute;
+    bottom:100px;
+    width:100%;
+    height:150px;
+    background:radial-gradient(
+        ellipse at center,
+        rgba(0,255,255,0.2),
+        transparent 70%
+    );
+    filter:blur(30px);
+    animation:mistMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes mistMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(-20px);}
+}
+
+/* ✨ Partículas */
+.sparkles{
+    position:absolute;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.sparkles::before{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    box-shadow:
+        50px 100px white,
+        120px 200px white,
+        200px 150px white,
+        180px 250px white,
+        90px 300px white;
+    animation:float 10s infinite linear;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-60px);}
+}
+
+/* 🌹 Rosa flotando */
+.rose{
+    position:absolute;
+    bottom:80px;
+    width:150px;
+    cursor:pointer;
+    animation:floatRose 4s ease-in-out infinite;
+    filter:
+        drop-shadow(0 0 20px #00ffff)
+        drop-shadow(0 0 40px #0088ff);
+}
+
+@keyframes floatRose{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* 💌 Mensaje secreto */
+.message{
+    position:absolute;
+    bottom:200px;
+    text-align:center;
+    color:white;
+    font-size:16px;
+    opacity:0;
+    transform:scale(.8);
+    transition:.5s;
+}
+
+.message.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* 🪵 Base */
+.base{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:80px;
+    background:linear-gradient(to right,
+        #3a1f0f,
+        #8b5a2b,
+        #3a1f0f
+    );
+    border-radius:0 0 30px 30px;
+    box-shadow:
+        0 -10px 25px rgba(0,0,0,0.7),
+        0 0 30px rgba(255,180,100,0.3);
 }
