@@ -1,7 +1,7 @@
 /* Configuración del escenario */
 body {
     margin: 0;
-    background: radial-gradient(circle at 30% 30%, #0b1a2e, #030711);
+    background: radial-gradient(circle at 20% 20%, #132336, #02040a);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,264 +9,284 @@ body {
     overflow: hidden;
 }
 
-/* La Cúpula de Cristal (más realista) */
+/* Cúpula de vidrio realista */
 .glass-dome {
     position: relative;
-    width: 280px;
-    height: 440px;
+    width: 300px;
+    height: 460px;
     background: rgba(255, 255, 255, 0.02);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 160px 160px 20px 20px;
-    backdrop-filter: blur(3px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 170px 170px 20px 20px;
+    backdrop-filter: blur(4px);
     box-shadow: 
-        inset 0 20px 30px rgba(255, 255, 255, 0.1),
-        inset -10px -10px 20px rgba(0, 0, 0, 0.3),
-        0 0 60px rgba(255, 120, 120, 0.3);
+        inset 0 30px 40px rgba(255, 255, 255, 0.15),
+        inset -15px -15px 30px rgba(0, 0, 0, 0.4),
+        0 0 70px rgba(255, 100, 100, 0.4);
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 20px;
+    overflow: hidden;
 }
 
-/* Reflejos en el cristal */
+/* Reflejos complejos */
 .glass-dome::before {
     content: '';
     position: absolute;
     top: 5%;
-    left: 10%;
-    width: 40px;
-    height: 180px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+    left: 5%;
+    width: 60px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
     border-radius: 40px;
-    filter: blur(8px);
-    transform: rotate(8deg);
+    filter: blur(12px);
+    transform: rotate(10deg);
     z-index: 2;
 }
 
 .glass-dome::after {
     content: '';
     position: absolute;
-    top: 15%;
-    right: 10%;
-    width: 20px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.15);
+    bottom: 10%;
+    right: 5%;
+    width: 40px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 40px;
-    filter: blur(5px);
-    transform: rotate(-5deg);
+    filter: blur(8px);
+    transform: rotate(-8deg);
 }
 
-/* Base de Madera con textura */
+/* Base de madera con vetas */
 .base {
     position: absolute;
     bottom: -20px;
-    width: 300px;
-    height: 30px;
-    background: linear-gradient(145deg, #3e2c1c, #5a3f28, #2f1f12);
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6), inset 0 2px 3px rgba(255,215,140,0.3);
+    width: 320px;
+    height: 32px;
+    background: repeating-linear-gradient(45deg, #4a3624 0px, #4a3624 5px, #5e4a34 5px, #5e4a34 10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,215,140,0.4);
 }
 
-/* Contenedor de la Flor */
+/* Contenedor de la flor */
 .flower {
     position: relative;
     width: 100px;
-    height: 280px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Tallo (ahora con espinas) */
+/* Tallo con textura leñosa y nudos */
 .stem {
     position: relative;
-    width: 6px;
-    height: 170px;
-    background: linear-gradient(to right, #1f4a2a, #3c9e5a, #1f4a2a);
-    border-radius: 3px;
-    box-shadow: 0 0 12px rgba(60, 179, 113, 0.5);
+    width: 8px;
+    height: 180px;
+    background: linear-gradient(145deg, #1c4a2a, #3a8e5a, #1c4a2a);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(60, 179, 113, 0.6);
 }
 
-/* Espinas del tallo */
+/* Nudos del tallo */
 .stem::before,
 .stem::after {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 4px;
+    width: 12px;
+    height: 6px;
     background: #2b5e3a;
-    border-radius: 2px;
-    transform: rotate(30deg);
-    left: -6px;
+    border-radius: 3px;
+    left: -2px;
+    filter: blur(1px);
 }
 .stem::before {
-    top: 40px;
-    transform: rotate(-30deg);
+    top: 30px;
+    transform: rotate(-10deg);
 }
 .stem::after {
-    top: 90px;
+    top: 100px;
     left: auto;
-    right: -6px;
-    transform: rotate(30deg);
+    right: -2px;
+    transform: rotate(10deg);
 }
 
-/* Hojas más realistas */
+/* Hojas con más detalle */
 .leaf {
     position: absolute;
-    width: 38px;
-    height: 22px;
-    background: linear-gradient(145deg, #256f3a, #3ea85e);
+    width: 45px;
+    height: 25px;
+    background: linear-gradient(145deg, #1f6a3a, #3cb371, #1f6a3a);
     border-radius: 80% 0 60% 20%;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.4));
 }
 
 .leaf.l {
     bottom: 60px;
-    left: 15px;
-    transform: rotate(-35deg);
+    left: 10px;
+    transform: rotate(-40deg);
 }
 
 .leaf.r {
-    bottom: 90px;
+    bottom: 95px;
     left: 45px;
-    transform: rotate(35deg) scaleX(-1);
+    transform: rotate(40deg) scaleX(-1);
 }
 
-/* Venas de las hojas */
+/* Venas principales y secundarias */
+.leaf::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 50%, transparent 60%, rgba(0,40,0,0.2) 80%);
+    border-radius: inherit;
+}
+
 .leaf::after {
     content: '';
     position: absolute;
     width: 80%;
-    height: 2px;
-    background: rgba(20, 60, 20, 0.6);
+    height: 3px;
+    background: rgba(20, 70, 20, 0.5);
     top: 45%;
     left: 10%;
-    transform: rotate(-10deg);
-    border-radius: 1px;
+    transform: rotate(-12deg);
+    border-radius: 2px;
+    box-shadow: 0 5px 0 rgba(20,70,20,0.3);
 }
 
-/* Cabeza de la Flor (punto de origen centrado) */
+/* Punto de origen de los pétalos (centrado) */
 .head {
     position: absolute;
     top: 0;
     left: 50%;
     width: 0;
     height: 0;
-    animation: float 4s ease-in-out infinite;
+    animation: floatRotate 6s ease-in-out infinite;
     cursor: pointer;
     transition: transform 0.4s ease;
 }
 
 .head:hover {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
-/* Pétalos genéricos */
+/* Pétalos base */
 .petal {
     position: absolute;
-    background: radial-gradient(circle at 30% 20%, #ffc0c0, #cc3333, #8b1a1a);
-    border-radius: 60% 40% 40% 60%;
-    box-shadow: 0 5px 12px rgba(180, 0, 0, 0.5), inset -2px -3px 5px rgba(0,0,0,0.3);
+    border-radius: 60% 40% 50% 50%;
     transform-origin: bottom center;
+    box-shadow: 0 8px 15px rgba(150, 0, 0, 0.4), inset -3px -4px 6px rgba(0,0,0,0.3);
 }
 
-/* Pétalos interiores (pequeños, más oscuros) */
-.inner {
+/* Capas con diferentes formas y colores */
+.layer1 {
     width: 22px;
     height: 38px;
     left: -11px;
     top: -38px;
-    background: radial-gradient(circle at 30% 20%, #ffa0a0, #b32b2b, #6d1212);
+    background: radial-gradient(circle at 40% 20%, #ffc0c0, #b22222, #6d0f0f);
+    clip-path: polygon(20% 0%, 80% 0%, 95% 30%, 85% 70%, 50% 100%, 15% 70%, 5% 30%);
 }
 
-/* Pétalos medios */
-.middle {
+.layer2 {
     width: 30px;
     height: 52px;
     left: -15px;
     top: -52px;
-    background: radial-gradient(circle at 30% 20%, #ffb6b6, #cc3a3a, #911e1e);
+    background: radial-gradient(circle at 35% 20%, #ffb6b6, #c03939, #8b1a1a);
+    clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 90% 70%, 50% 100%, 10% 70%, 0% 30%);
 }
 
-/* Pétalos exteriores (más grandes y claros) */
-.outer {
-    width: 38px;
-    height: 64px;
-    left: -19px;
-    top: -64px;
+.layer3 {
+    width: 40px;
+    height: 66px;
+    left: -20px;
+    top: -66px;
     background: radial-gradient(circle at 30% 20%, #ffe0e0, #e64d4d, #a52626);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 95% 65%, 50% 100%, 5% 65%, 0% 25%);
 }
 
-/* Rotaciones de los pétalos */
-.p1 { transform: rotate(0deg); }
-.p2 { transform: rotate(72deg); }
-.p3 { transform: rotate(144deg); }
-.p4 { transform: rotate(216deg); }
-.p5 { transform: rotate(288deg); }
+/* Rotaciones distribuidas uniformemente */
+.p1  { transform: rotate(0deg); }
+.p2  { transform: rotate(60deg); }
+.p3  { transform: rotate(120deg); }
+.p4  { transform: rotate(180deg); }
+.p5  { transform: rotate(240deg); }
+.p6  { transform: rotate(300deg); }
 
-.p6 { transform: rotate(36deg); }
-.p7 { transform: rotate(108deg); }
-.p8 { transform: rotate(180deg); }
-.p9 { transform: rotate(252deg); }
-.p10 { transform: rotate(324deg); }
+.p7  { transform: rotate(22.5deg); }
+.p8  { transform: rotate(82.5deg); }
+.p9  { transform: rotate(142.5deg); }
+.p10 { transform: rotate(202.5deg); }
+.p11 { transform: rotate(262.5deg); }
+.p12 { transform: rotate(322.5deg); }
+.p13 { transform: rotate(45deg); }
+.p14 { transform: rotate(105deg); }
 
-.p11 { transform: rotate(0deg); }
-.p12 { transform: rotate(45deg); }
-.p13 { transform: rotate(90deg); }
-.p14 { transform: rotate(135deg); }
-.p15 { transform: rotate(180deg); }
-.p16 { transform: rotate(225deg); }
-.p17 { transform: rotate(270deg); }
-.p18 { transform: rotate(315deg); }
+.p15 { transform: rotate(0deg); }
+.p16 { transform: rotate(36deg); }
+.p17 { transform: rotate(72deg); }
+.p18 { transform: rotate(108deg); }
+.p19 { transform: rotate(144deg); }
+.p20 { transform: rotate(180deg); }
+.p21 { transform: rotate(216deg); }
+.p22 { transform: rotate(252deg); }
+.p23 { transform: rotate(288deg); }
+.p24 { transform: rotate(324deg); }
 
-/* Centro de la flor (estambres) */
+/* Centro de la flor */
 .center {
     position: absolute;
-    width: 24px;
-    height: 24px;
-    left: -12px;
-    top: -12px;
-    background: #fdeaa8;
+    width: 28px;
+    height: 28px;
+    left: -14px;
+    top: -14px;
+    background: #f5e6b3;
     border-radius: 50%;
-    box-shadow: 0 0 15px #ffd966;
-    z-index: 20;
+    box-shadow: 0 0 20px #ffcc66;
+    z-index: 25;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 3px;
+    padding: 4px;
 }
 
 .stamen {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: #fcb56d;
     border-radius: 50%;
-    margin: 1px;
+    margin: 2px;
     box-shadow: 0 0 8px #ffaa33;
 }
 
-/* Animación de flotación */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+/* Animación combinada de flotación y rotación */
+@keyframes floatRotate {
+    0%   { transform: translateY(0) rotate(0deg); }
+    25%  { transform: translateY(-8px) rotate(1deg); }
+    50%  { transform: translateY(-15px) rotate(0deg); }
+    75%  { transform: translateY(-8px) rotate(-1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
 }
 
 /* Destellos */
 .sparkle {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #fffde7;
+    width: 5px;
+    height: 5px;
+    background: #fffdf0;
     border-radius: 50%;
-    box-shadow: 0 0 10px #ffb3b3;
-    animation: rise 5s infinite;
+    box-shadow: 0 0 15px #ffb3b3;
+    animation: rise 6s infinite;
     opacity: 0;
     z-index: 30;
 }
 
 @keyframes rise {
-    0% { transform: translateY(0) scale(0.5); opacity: 0; }
-    30% { opacity: 1; }
-    100% { transform: translateY(-130px) scale(1.2); opacity: 0; }
-      }
+    0%   { transform: translateY(0) scale(0.5); opacity: 0; }
+    20%  { opacity: 0.8; }
+    100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+}
