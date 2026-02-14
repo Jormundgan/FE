@@ -6,7 +6,7 @@
 
 body {
     /* Usamos tu imagen 1000589623.jpg de fondo */
-    background: url('1000589623.jpg') no-repeat center center fixed;
+    background: url('P.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;
