@@ -7,7 +7,7 @@
 body {
     /* --- NUEVO FONDO CON TEXTURA --- */
     /* Usamos la imagen que proporcionaste como fondo principal */
-    background-image: url('image_17.png');
+    background-image: url('P.jpeg');
     /* Asegura que la imagen cubra toda la pantalla sin deformarse */
     background-size: cover;
     /* Evita que la imagen se repita como un patrón */
