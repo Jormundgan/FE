@@ -19,7 +19,7 @@ body {
     align-items: center;
 }
 
-video {
+VideoRosa {
     /* El video se expande para llenar la pantalla */
     width: 50vw;
     height: 50vh;
@@ -30,4 +30,10 @@ video {
     
     /* Ajuste de brillo para que resalte en móvil y PC */
     filter: brightness(1.1) contrast(1.1);
+}
+
+@media (max-width: 768px) {
+    .VideoRosa {
+        max-width: 90%;
+    }
 }
