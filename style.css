@@ -1,72 +1,53 @@
-/* Configuración del escenario */
+/* Reset y Fondo */
+* { box-sizing: border-box; }
 body {
     margin: 0;
-    background-color: #050a15;
+    background-color: #02050a;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
 }
 
-/* La Cúpula de Cristal */
-.glass-dome {
+.container {
     position: relative;
-    width: 250px;
-    height: 400px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 150px 150px 10px 10px;
-    backdrop-filter: blur(2px);
-    box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.1), 
-                0 0 50px rgba(0, 210, 255, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 20px;
-}
-
-/* Reflejo de luz en el cristal */
-.glass-dome::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 25px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 40px;
-    filter: blur(5px);
-    transform: rotate(5deg);
-}
-
-/* Base de Madera */
-.base {
-    position: absolute;
-    bottom: -20px;
-    width: 280px;
-    height: 30px;
-    background: linear-gradient(to right, #2c1b10, #4a301d, #2c1b10);
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-/* Contenedor de la Flor */
-.flower {
-    position: relative;
-    width: 100px;
-    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Tallo y Hojas */
+/* Cúpula */
+.glass-dome {
+    position: relative;
+    width: 220px;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 110px 110px 10px 10px;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.2), inset 0 10px 20px rgba(255,255,255,0.1);
+}
+
+/* La Flor */
+.flower {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 20px;
+}
+
+/* Tallo - Ahora las hojas están DENTRO del tallo para no perderse */
 .stem {
     width: 4px;
-    height: 150px;
-    background: linear-gradient(to top, #1a4a28, #3cb371);
-    box-shadow: 0 0 10px rgba(60, 179, 113, 0.4);
+    height: 140px;
+    background: linear-gradient(to top, #13331d, #2e8b57);
+    border-radius: 2px;
+    position: relative;
 }
 
 .leaf {
@@ -75,72 +56,97 @@ body {
     height: 15px;
     background: #2e8b57;
     border-radius: 50% 0 50% 0;
-}
-.leaf.l { bottom: 60px; left: -25px; transform: rotate(-30deg); }
-.leaf.r { bottom: 90px; right: -25px; transform: rotate(30deg) scaleX(-1); }
-
-/* Cabeza de la Flor (Pétalos) */
-.head {
-    position: absolute;
-    top: -20px;
-    animation: float 3s ease-in-out infinite;
-    cursor: pointer;
-    transition: transform 0.3s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* Efecto al pasar el ratón */
-.head:hover {
-    transform: scale(1.1);
+.leaf-left {
+    top: 40px;
+    right: 4px; /* Pegada al tallo */
+    transform: rotate(-30deg);
+}
+
+.leaf-right {
+    top: 70px;
+    left: 4px; /* Pegada al tallo */
+    transform: rotate(30deg) scaleX(-1);
+}
+
+/* Pétalos */
+.flower-head {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: bottom center;
 }
 
 .petal {
     position: absolute;
-    width: 35px;
+    bottom: 0;
+    left: 50%;
+    width: 40px;
     height: 60px;
-    background: radial-gradient(circle at bottom, #fff, #00d2ff, #0055ff);
+    background: radial-gradient(circle at center, #80dfff, #0077ff, #001133);
     border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 15px #00ffff;
+    margin-left: -20px;
+    box-shadow: 0 0 15px rgba(0, 180, 255, 0.6);
     transform-origin: bottom center;
+    opacity: 0.9;
 }
 
-/* Posiciones de los pétalos */
-.p1 { transform: rotate(0deg); }
-.p2 { transform: rotate(-40deg); }
-.p3 { transform: rotate(40deg); }
-.p4 { transform: rotate(-75deg); }
-.p5 { transform: rotate(75deg); }
+/* Distribución manual para evitar errores */
+.p1 { transform: rotate(0deg); z-index: 5; }
+.p2 { transform: rotate(-30deg); }
+.p3 { transform: rotate(30deg); }
+.p4 { transform: rotate(-60deg); opacity: 0.7; }
+.p5 { transform: rotate(60deg); opacity: 0.7; }
 
-.center {
+.flower-center {
     position: absolute;
+    bottom: 10px;
+    left: 50%;
     width: 15px;
     height: 15px;
-    background: white;
+    background: #fff;
     border-radius: 50%;
-    top: 45px;
-    left: 10px;
-    box-shadow: 0 0 20px white;
+    margin-left: -7.5px;
+    box-shadow: 0 0 20px #fff, 0 0 40px #00aaff;
     z-index: 10;
 }
 
-/* Animaciones */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+/* Base */
+.base {
+    width: 250px;
+    height: 20px;
+    background: #261a10;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-.sparkle {
+/* Animaciones */
+@keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg) translateY(-5px); }
+}
+
+/* Polvo mágico */
+.dust {
     position: absolute;
     width: 3px;
     height: 3px;
     background: white;
     border-radius: 50%;
-    box-shadow: 0 0 5px #00ffff;
-    animation: rise 4s infinite;
-    opacity: 0;
+    filter: blur(1px);
+    animation: rise 5s infinite linear;
 }
 
+.d1 { left: 30%; animation-delay: 0s; }
+.d2 { left: 70%; animation-delay: 2s; }
+.d3 { left: 50%; animation-delay: 4s; }
+
 @keyframes rise {
-    0% { transform: translateY(0); opacity: 0; }
+    0% { bottom: 0; opacity: 0; }
     50% { opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
+    100% { bottom: 80%; opacity: 0; }
 }
+
