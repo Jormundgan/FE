@@ -30,16 +30,17 @@ body {
 
 /* Estilos responsivos para el video */
 video {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    max-width: 600px; /* Ajusta según el tamaño de tu video */
+    height: auto;
+    object-fit: contain;
+    background-color: #0F030F; /* Fondo igual al body por si tarda */
     
-    /* object-fit: contain asegura que el video se escale manteniendo 
-       su proporción original (no se estira ni se recorta) */
-    object-fit: contain; 
-    
-    /* Opcional: bordes ligeramente redondeados */
-    border-radius: 8px; 
-    
-    /* Opcional: un levísimo resplandor para integrarlo con el fondo */
-    box-shadow: 0 0 20px rgba(255, 20, 147, 0.05);
+    /* Animación de entrada suave */
+    animation: aparecer 0.5s ease-in;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
