@@ -5,8 +5,9 @@
 }
 
 body {
-    /* Tu color púrpura oscuro exacto */
-    background-color: #0F030F; 
+    /* Este degradado crea una sensación de profundidad púrpura */
+    background: radial-gradient(circle, #2d0a2d 0%, #150215 60%, #050005 100%);
+    
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,20 +21,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+/* Añadimos un resplandor extra detrás del video */
+.contenedor-principal::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 20, 147, 0.15); /* Color de la rosa */
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .video-full {
     width: 100%;
     height: 100%;
-    /* "contain" para que se vea todo el video sin recortes */
-    /* "cover" si prefieres que llene toda la pantalla del móvil */
     object-fit: contain; 
+    position: relative;
+    z-index: 1;
     
-    /* Animación para que aparezca suavemente al cargar */
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    /* Suavizamos los bordes del video para que se mezclen con el fondo */
+    mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
 }
