@@ -5,33 +5,32 @@
 }
 
 body {
-    /* Este degradado crea una sensación de profundidad púrpura */
-    background-image: URL"P.jpeg";
+    /* Usamos tu imagen de fondo para que no haya huecos negros */
+    background: url('P.jpeg') no-repeat center center fixed;
     background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.contenedor-principal {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.video-full {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    position: relative;
-    z-index: 1;
     
-    /* Suavizamos los bordes del video para que se mezclen con el fondo */
-    mask-image: radial-gradient(circle, black 70%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    /* Forzamos que el cuerpo no tenga scroll y ocupe todo */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    /* El video se expande para llenar la pantalla */
+    width: 100vw;
+    height: 100vh;
+    
+    /* 'cover' hace que el video llene todo sin dejar espacios, 
+       aunque se recorte un poco en los lados para ajustar */
+    object-fit: cover;
+    
+    /* El truco de mezcla para que el púrpura de tu imagen 
+       se fusione con el brillo de la rosa */
+    mix-blend-mode: screen;
+    
+    /* Ajuste de brillo para que resalte en móvil y PC */
+    filter: brightness(1.1) contrast(1.1);
 }
