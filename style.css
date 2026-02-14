@@ -5,8 +5,16 @@
 }
 
 body {
-    /* Fondo base muy oscuro para que el púrpura resalte */
-    background-color: #0a000a; 
+    /* --- NUEVO FONDO CON TEXTURA --- */
+    /* Usamos la imagen que proporcionaste como fondo principal */
+    background-image: url('image_17.png');
+    /* Asegura que la imagen cubra toda la pantalla sin deformarse */
+    background-size: cover;
+    /* Evita que la imagen se repita como un patrón */
+    background-repeat: no-repeat;
+    /* Centra la imagen en la pantalla */
+    background-position: center;
+    
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -23,12 +31,11 @@ body {
     align-items: center;
 }
 
-/* Esta es la capa que crea el efecto púrpura ambiental */
+/* La capa de "aura" se mantiene para añadir un resplandor mágico sobre la textura */
 .aura {
     position: absolute;
     width: 80%;
     height: 80%;
-    /* Un degradado radial con púrpuras y magentas */
     background: radial-gradient(circle, 
         rgba(106, 13, 173, 0.4) 0%, 
         rgba(50, 0, 50, 0.2) 50%, 
@@ -40,24 +47,21 @@ body {
 .video-rosa {
     z-index: 2;
     max-width: 100%;
-    max-height: 90vh; /* Para que en PC no se corte */
+    max-height: 90vh;
     object-fit: contain;
     
-    /* TRUCO: Este filtro ayuda a que el púrpura del video 
-       se integre con el fondo de la página */
+    /* Este filtro proyecta el brillo rosa sobre la nueva textura de fondo */
     filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.2));
     
-    /* Animación suave al cargar */
     animation: luzRosa 3s infinite alternate ease-in-out;
 }
 
-/* Pequeña animación para que el fondo "respire" con la rosa */
 @keyframes luzRosa {
     from { filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.2)); }
     to { filter: drop-shadow(0 0 50px rgba(255, 0, 127, 0.4)); }
 }
 
-/* Ajuste específico para móviles */
+/* Ajustes para móviles */
 @media (max-width: 768px) {
     .video-rosa {
         width: 100%;
@@ -65,9 +69,5 @@ body {
     }
     .aura {
         width: 100%;
-        background: radial-gradient(circle, 
-            rgba(106, 13, 173, 0.6) 0%, 
-            rgba(30, 0, 30, 0.3) 60%, 
-            transparent 90%);
     }
 }
