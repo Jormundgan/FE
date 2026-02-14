@@ -72,7 +72,6 @@ body {
     top: 60px;
     left: 50%;
     transform: translateX(-50%);
-    transform-style: preserve-3d;
     animation: float 6s ease-in-out infinite;
 }
 
@@ -171,30 +170,30 @@ body {
 
 .layer1 { z-index: 30; }
 .layer2 { z-index: 20; filter: brightness(0.9); }
-.layer3 { z-index: 10; filter: brightness(0.75); }
+.layer3 { z-index: 10; filter: brightness(0.8); }
 
-.p1  { transform: rotate(0deg) rotateX(15deg); }
-.p2  { transform: rotate(60deg) rotateX(15deg); }
-.p3  { transform: rotate(120deg) rotateX(15deg); }
-.p4  { transform: rotate(180deg) rotateX(15deg); }
-.p5  { transform: rotate(240deg) rotateX(15deg); }
-.p6  { transform: rotate(300deg) rotateX(15deg); }
+.p1  { transform: rotate(0deg); }
+.p2  { transform: rotate(60deg); }
+.p3  { transform: rotate(120deg); }
+.p4  { transform: rotate(180deg); }
+.p5  { transform: rotate(240deg); }
+.p6  { transform: rotate(300deg); }
 
-.p7  { transform: rotate(30deg) rotateX(25deg); }
-.p8  { transform: rotate(90deg) rotateX(25deg); }
-.p9  { transform: rotate(150deg) rotateX(25deg); }
-.p10 { transform: rotate(210deg) rotateX(25deg); }
-.p11 { transform: rotate(270deg) rotateX(25deg); }
-.p12 { transform: rotate(330deg) rotateX(25deg); }
+.p7  { transform: rotate(30deg); }
+.p8  { transform: rotate(90deg); }
+.p9  { transform: rotate(150deg); }
+.p10 { transform: rotate(210deg); }
+.p11 { transform: rotate(270deg); }
+.p12 { transform: rotate(330deg); }
 
-.p15 { transform: rotate(0deg) rotateX(35deg); }
-.p16 { transform: rotate(36deg) rotateX(35deg); }
-.p17 { transform: rotate(72deg) rotateX(35deg); }
-.p18 { transform: rotate(108deg) rotateX(35deg); }
-.p19 { transform: rotate(144deg) rotateX(35deg); }
-.p20 { transform: rotate(180deg) rotateX(35deg); }
-.p21 { transform: rotate(216deg) rotateX(35deg); }
-.p22 { transform: rotate(252deg) rotateX(35deg); }
-.p23 { transform: rotate(288deg) rotateX(35deg); }
-.p24 { transform: rotate(324deg) rotateX(35deg); }
+.p15 { transform: rotate(0deg); }
+.p16 { transform: rotate(36deg); }
+.p17 { transform: rotate(72deg); }
+.p18 { transform: rotate(108deg); }
+.p19 { transform: rotate(144deg); }
+.p20 { transform: rotate(180deg); }
+.p21 { transform: rotate(216deg); }
+.p22 { transform: rotate(252deg); }
+.p23 { transform: rotate(288deg); }
+.p24 { transform: rotate(324deg); }
 
