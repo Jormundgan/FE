@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor Encantada en Cúpula</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #050a15;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Contenedor de la Cúpula */
+        .glass-dome {
+            position: relative;
+            width: 250px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 150px 150px 10px 10px;
+            backdrop-filter: blur(2px);
+            box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.1), 
+                        0 0 50px rgba(0, 210, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+
+        /* Reflejo del cristal */
+        .glass-dome::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 30px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            filter: blur(5px);
+            transform: rotate(5deg);
+        }
+
+        /* Base de madera */
+        .base {
+            position: absolute;
+            bottom: -20px;
+            width: 280px;
+            height: 30px;
+            background: linear-gradient(to right, #2c1b10, #4a301d, #2c1b10);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* La Flor */
+        .flower {
+            position: relative;
+            width: 100px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stem {
+            width: 4px;
+            height: 150px;
+            background: linear-gradient(to top, #1a4a28, #3cb371);
+            box-shadow: 0 0 10px rgba(60, 179, 113, 0.4);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background: #2e8b57;
+            border-radius: 50% 0 50% 0;
+        }
+        .leaf.l { bottom: 60px; left: -25px; transform: rotate(-30deg); }
+        .leaf.r { bottom: 90px; right: -25px; transform: rotate(30deg) scaleX(-1); }
+
+        /* Pétalos con brillo */
+        .head {
+            position: absolute;
+            top: -20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .petal {
+            position: absolute;
+            width: 35px;
+            height: 60px;
+            background: radial-gradient(circle at bottom, #fff, #00d2ff, #0055ff);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #00ffff;
+            transform-origin: bottom center;
+        }
+
+        .p1 { transform: rotate(0deg); }
+        .p2 { transform: rotate(-40deg); }
+        .p3 { transform: rotate(40deg); }
+        .p4 { transform: rotate(-75deg); }
+        .p5 { transform: rotate(75deg); }
+
+        .center {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            top: 45px;
+            left: 10px;
+            box-shadow: 0 0 20px white;
+            z-index: 10;
+        }
+
+        /* Animación de flotar */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Partículas */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ffff;
+            animation: rise 4s infinite;
+            opacity: 0;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-dome">
+        <div class="flower">
+            <div class="head">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="center"></div>
+                <div class="sparkle" style="left:10px; animation-delay: 0s;"></div>
+                <div class="sparkle" style="left:40px; animation-delay: 1s;"></div>
+                <div class="sparkle" style="left:-20px; animation-delay: 2s;"></div>
+            </div>
+            <div class="leaf l"></div>
+            <div class="leaf r"></div>
+            <div class="stem"></div>
+        </div>
+        <div class="base"></div>
+    </div>
+
+</body>
+</html>
