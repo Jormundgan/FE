@@ -19,7 +19,7 @@ body {
     align-items: center;
 }
 
-VideoRosa {
+videoRosa {
     /* El video se expande para llenar la pantalla */
     width: 50vw;
     height: 50vh;
@@ -33,7 +33,7 @@ VideoRosa {
 }
 
 @media (max-width: 768px) {
-    .VideoRosa {
+    .videoRosa {
         max-width: 90%;
     }
 }
