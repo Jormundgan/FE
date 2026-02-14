@@ -5,16 +5,9 @@
 }
 
 body {
-    /* --- NUEVO FONDO CON TEXTURA --- */
-    /* Usamos la imagen que proporcionaste como fondo principal */
-    background-image: url('P.jpeg');
-    /* Asegura que la imagen cubra toda la pantalla sin deformarse */
+    /* Usamos tu imagen 1000589623.jpg de fondo */
+    background: url('1000589623.jpg') no-repeat center center fixed;
     background-size: cover;
-    /* Evita que la imagen se repita como un patrón */
-    background-repeat: no-repeat;
-    /* Centra la imagen en la pantalla */
-    background-position: center;
-    
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -22,52 +15,34 @@ body {
     overflow: hidden;
 }
 
-.escena {
+.universo {
     position: relative;
     width: 100%;
-    height: 100vh;
+    max-width: 500px; /* Ajuste para que en PC no sea gigante */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* La capa de "aura" se mantiene para añadir un resplandor mágico sobre la textura */
-.aura {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, 
-        rgba(106, 13, 173, 0.4) 0%, 
-        rgba(50, 0, 50, 0.2) 50%, 
-        transparent 80%);
-    filter: blur(60px);
-    z-index: 1;
-}
-
 .video-rosa {
-    z-index: 2;
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
+    width: 100%;
+    height: auto;
     
-    /* Este filtro proyecta el brillo rosa sobre la nueva textura de fondo */
-    filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.2));
+    /* TRUCO MAESTRO: 'screen' elimina el negro del video 
+       y lo mezcla con el fondo púrpura de tu imagen */
+    mix-blend-mode: screen;
     
-    animation: luzRosa 3s infinite alternate ease-in-out;
+    /* Aumentamos un poco el contraste para que el rosa resalte */
+    filter: contrast(1.1) brightness(1.2);
+    
+    /* Evita que se vea el borde cuadrado del video */
+    mask-image: radial-gradient(circle, black 60%, transparent 95%);
+    -webkit-mask-image: radial-gradient(circle, black 60%, transparent 95%);
 }
 
-@keyframes luzRosa {
-    from { filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.2)); }
-    to { filter: drop-shadow(0 0 50px rgba(255, 0, 127, 0.4)); }
-}
-
-/* Ajustes para móviles */
+/* Ajuste para móviles: que ocupe casi toda la pantalla */
 @media (max-width: 768px) {
-    .video-rosa {
-        width: 100%;
-        height: auto;
-    }
-    .aura {
-        width: 100%;
+    .universo {
+        max-width: 90%;
     }
 }
