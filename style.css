@@ -1,4 +1,4 @@
-/* --- RESET BÁSICO --- */
+/* Quitamos márgenes por defecto */
 * {
     margin: 0;
     padding: 0;
@@ -6,120 +6,40 @@
 }
 
 body {
-    /* Aquí está tu fondo púrpura oscuro */
+    /* Tu color púrpura profundo */
     background-color: #0F030F; 
-    font-family: sans-serif;
-    overflow-x: hidden;
-}
-
-/* --- CONTENEDOR PRINCIPAL RESPONSIVO --- */
-.contenedor-principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* --- LA CÚPULA DE CRISTAL --- */
-.cupula {
-    position: relative;
-    width: 100%;
-    max-width: 320px; /* Tamaño máximo para PC */
-    height: 60vh;     /* Se adapta a la altura de la pantalla */
-    max-height: 480px;
     
-    /* Forma de cúpula */
-    border-radius: 160px 160px 20px 20px;
-    
-    /* Efecto de cristal y reflejo */
-    background: linear-gradient(
-        to bottom, 
-        rgba(255, 255, 255, 0.05) 0%, 
-        rgba(255, 20, 147, 0.02) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: none;
-    
-    /* Sombra interior (reflejo curvo) y sombra exterior (brillo rosa) */
-    box-shadow: 
-        inset 0 30px 40px rgba(255, 255, 255, 0.05),
-        inset 0 -20px 50px rgba(255, 20, 147, 0.15),
-        0 0 50px rgba(255, 20, 147, 0.1);
-        
+    /* Centramos el contenido en la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    z-index: 2;
+    
+    /* La altura será el 100% de la ventana visible */
+    min-height: 100vh; 
 }
 
-/* --- LA ROSA (IMAGEN O VIDEO) --- */
-.rosa-media {
-    width: 60%;
-    height: auto;
-    object-fit: contain;
-    position: relative;
-    z-index: 3;
-    /* Efecto de brillo intenso en la flor */
-    filter: drop-shadow(0 0 25px #FF1493) drop-shadow(0 0 10px #FF1493);
-}
-
-/* --- BRILLO ROSA DE FONDO --- */
-.resplandor-interior {
-    position: absolute;
-    top: 20%;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(255, 20, 147, 0.6) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-/* --- BASE DE LA CÚPULA --- */
-.base-cupula {
+/* Contenedor que limita el espacio del video */
+.contenedor-video {
     width: 100%;
-    max-width: 360px; /* Un poco más ancha que la cúpula */
-    height: 40px;
-    background: linear-gradient(to right, #1a051a, #2d0a2d, #1a051a);
-    border-radius: 20px;
-    margin-top: -10px; /* Para que la cúpula encaje dentro de la base */
-    z-index: 3;
-    box-shadow: 0 15px 30px #050105;
-    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Pequeño margen para que no pegue a los bordes en PC */
 }
 
-/* Detalle superior de la base */
-.base-reflejo {
-    position: absolute;
-    top: 0;
-    left: 5%;
-    width: 90%;
-    height: 15px;
-    background: rgba(255, 20, 147, 0.1);
-    border-radius: 50%;
-}
-
-/* --- PARTÍCULAS MÁGICAS (Pétalos/Polvo) --- */
-.particula {
-    position: absolute;
-    background-color: #FF1493;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px #FF1493;
-    z-index: 2;
-    opacity: 0.6;
-}
-
-.p1 { width: 4px; height: 4px; bottom: 15%; left: 30%; }
-.p2 { width: 6px; height: 3px; bottom: 10%; right: 25%; border-radius: 50% 0 50% 0; }
-.p3 { width: 3px; height: 3px; top: 40%; left: 20%; }
-.p4 { width: 5px; height: 5px; top: 60%; right: 15%; }
-
-/* --- MEDIA QUERIES (Para móviles más pequeños) --- */
-@media (max-width: 400px) {
-    .cupula {
-        height: 55vh;
-        border-radius: 140px 140px 15px 15px;
-    }
+/* Estilos responsivos para el video */
+video {
+    max-width: 100%;
+    max-height: 100%;
+    
+    /* object-fit: contain asegura que el video se escale manteniendo 
+       su proporción original (no se estira ni se recorta) */
+    object-fit: contain; 
+    
+    /* Opcional: bordes ligeramente redondeados */
+    border-radius: 8px; 
+    
+    /* Opcional: un levísimo resplandor para integrarlo con el fondo */
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.05);
 }
