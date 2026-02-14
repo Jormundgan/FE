@@ -3,31 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa Encantada</title>
+    <title>Rosa Mágica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="contenedor-principal">
+    <div class="escena">
+        <div class="aura"></div>
+        
         <video 
-            id="videoRosa"
             autoplay 
             loop 
             muted 
             playsinline 
             preload="auto"
-            class="video-full">
+            class="video-rosa">
             <source src="rosa.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
         </video>
     </div>
 
-    <script>
-        // Truco extra para forzar la carga inmediata
-        window.addEventListener('load', function() {
-            var video = document.getElementById('videoRosa');
-            video.play();
-        });
-    </script>
 </body>
 </html>
