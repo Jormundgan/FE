@@ -5,8 +5,8 @@
 }
 
 body {
-    /* Usamos tu imagen 1000589623.jpg de fondo */
-    background-image: url('P.jpeg') no-repeat center center fixed;
+    /* Este degradado crea una sensación de profundidad púrpura */
+    background-image: URL"P.jpeg";
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -15,34 +15,35 @@ body {
     overflow: hidden;
 }
 
-.universo {
-    position: relative;
+.contenedor-principal {
     width: 100%;
-    max-width: 500px; /* Ajuste para que en PC no sea gigante */
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.video-rosa {
+/* Añadimos un resplandor extra detrás del video */
+.contenedor-principal::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 20, 147, 0.15); /* Color de la rosa */
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.video-full {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain; 
+    position: relative;
+    z-index: 1;
     
-    /* TRUCO MAESTRO: 'screen' elimina el negro del video 
-       y lo mezcla con el fondo púrpura de tu imagen */
-    mix-blend-mode: screen;
-    
-    /* Aumentamos un poco el contraste para que el rosa resalte */
-    filter: contrast(1.1) brightness(1.2);
-    
-    /* Evita que se vea el borde cuadrado del video */
-    mask-image: radial-gradient(circle, black 60%, transparent 95%);
-    -webkit-mask-image: radial-gradient(circle, black 60%, transparent 95%);
-}
-
-/* Ajuste para móviles: que ocupe casi toda la pantalla */
-@media (max-width: 768px) {
-    .universo {
-        max-width: 90%;
-    }
+    /* Suavizamos los bordes del video para que se mezclen con el fondo */
+    mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
 }
