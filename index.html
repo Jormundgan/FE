@@ -3,15 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rosa Mágica</title>
+<title>Rosa Encantada</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="glass">
-    <img src="rose.png" class="rose">
-    <div class="base"></div>
+<div class="stars"></div>
+
+<div class="scene">
+    <div class="glass">
+
+        <div class="mist"></div>
+        <div class="sparkles"></div>
+
+        <img src="rose.png" class="rose" id="rose">
+
+        <div class="message" id="message">
+            ✨ Siempre serás mi rosa encantada ✨
+        </div>
+
+        <div class="base"></div>
+
+    </div>
 </div>
+
+<script>
+const rose = document.getElementById("rose");
+const message = document.getElementById("message");
+
+rose.addEventListener("click",()=>{
+    message.classList.toggle("show");
+});
+</script>
 
 </body>
 </html>
