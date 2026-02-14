@@ -21,8 +21,8 @@ body {
 
 video {
     /* El video se expande para llenar la pantalla */
-    width: 100vw;
-    height: 70vh;
+    width: 50vw;
+    height: 50vh;
     
     /* El truco de mezcla para que el púrpura de tu imagen 
        se fusione con el brillo de la rosa */
